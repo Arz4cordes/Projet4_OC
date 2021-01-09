@@ -18,10 +18,11 @@ class Tournaments:
         self.name = name
         self.place = place
         self.date = date
-        self.rounds_number = 4
+        self.total_of_rounds = 4
         self.rounds = []
-        self.players = []
+        self.participants = []
         self.time_controller = 1
+        self.description = ""
 
 class Players:
     """ each player have an attribute ranking, 0 by default
@@ -33,7 +34,12 @@ class Players:
         self.first_name = name2
         self.birth_date = date
         self.genre = genre
-        self.ranking = 0
+        self.rating = 0
+        self.event_points = 0
+    def informations(self):
+        info_list = [self.last_name, self.first_name,self.birth_date,
+                     self.genre, self.rating, self.event_points]
+        return info_list
 
 class Rounds:
     """ rounds of a tournament
@@ -42,13 +48,12 @@ class Rounds:
         true for the first round and false for others rounds
         :param: a_list is the players's list for the tournament
                 a_number is a float, the round's number
-                time1 is a list with a date and a time """
+                time1 is a list of tuples with date and hour keys """
     def __init__(self,a_list,a_number,time1):
-        self.players_list = a_list
+        self.participants = a_list
         self.round_number = a_number
         self.starting_time = time1
-        self.finishing_time = time1
-        self.round_type = True
+        self.finishing_time = {'day':[],'hour':[]}
 
     def classify(a_list):
         """ create players's ranking
