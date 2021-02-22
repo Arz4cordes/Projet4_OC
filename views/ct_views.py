@@ -71,6 +71,37 @@ def players_menu():
     return choice
 
 
+def players_view(players_list, a_choice):
+    """ display a players's list,
+    choice 1 is in alphabetical order,
+    choice 2 is by rating
+    choice 3 is in order of appearance
+    """
+    if players_list == []:
+        print("Il n'y a aucun joueur à afficher pour le moment.")
+    else:
+        if a_choice == 1:
+            print("Liste de tous les joueurs enregistrés ",
+                  "dans l'ordre alphabétique:")
+            for player in players_list:
+                print(player.display())
+                print("")
+        elif a_choice == 2:
+            print("Liste de tous les joueurs enregistrés ",
+                  "dans l'ordre de leur classement:")
+            i = 1
+            for player in players_list:
+                print(str(i) + ")")
+                print(player.display())
+                i += 1
+        elif a_choice == 3:
+            i = 0
+            for player in players_list:
+                print("Numéro", i)
+                print(player.display())
+                i += 1
+
+
 def choose_tournament(a_list):
     """ menu about tournaments's view
     :return: choice (type: int)
@@ -82,7 +113,8 @@ def choose_tournament(a_list):
     choice = 0
     while choice < 1 and choice > len(a_list):
         print("Entrer le numéro du tournoi pour voir ",
-              "le détail du tournoi ou 0 pour revenir au menu \"statistiques\".")
+              "le détail du tournoi ou 0 pour revenir au menu",
+              " 'statistiques' .")
         choice = input("? ")
         if choice.isdigit():
             choice = int(choice)
@@ -124,6 +156,9 @@ def tournament_ranking():
     return print("Voilà le classement actuel du tournoi")
 
 
-def players_stat():
-    pass
-    # return print(statistiques)
+def text_area_display(a_string):
+    return print(a_string)
+
+
+def information_message(a_string):
+    return print(a_string)
